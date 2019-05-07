@@ -30,6 +30,8 @@ public class SignInPane {
 	private PasswordField pwBox;
 	private Button signInBtn;
 	private Button signUpBtn;
+	
+	private SignIn signInLogic = new SignIn();
 
 	public SignInPane() {
 		rootPane = new GridPane();
@@ -112,37 +114,21 @@ public class SignInPane {
 			}
 		});
 
-		User user = new User(getUserTextField(), getPwBoxText());
-		Map<String, String> check = user.getUserInfo();
 		HomePane home = new HomePane();
 		// action when click button
 		signInBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-//				Map<String, String> userList = user.makeList();
-				if (!check.containsKey(getUserTextField())) {
+				try {	
+					Map<String, String> userDetails = signInLogic.signIn(getUserTextField(), getPwBoxText());
+					System.out.println("Login Success");
+					Main.controller.setCurrentUser(new User(userDetails));
+					Main.sceneController.changeScene(home.getHomeScene());
+				} catch (Exception e) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setContentText("Login fail");
 					alert.show();
-//					Main.changeScene(home.getHomeScene());
-				} else {
-					if (!check.get(getUserTextField()).equals(getPwBoxText())) {
-						Alert alert = new Alert(AlertType.ERROR);
-						alert.setContentText("Login fail");
-						alert.show();
-					} else {
-						Main.changeScene(home.getHomeScene());
-					}
 				}
-
-//						else {
-//							Alert warning = new Alert(AlertType.WARNING);
-//							warning.setHeaderText("Incorrect password");
-//							warning.setContentText("The password that you've entered is incorect. Please try again.");
-//							warning.showAndWait();
-//						}
-
-				// change to next scene
 			}
 		});
 		signUpBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -151,7 +137,7 @@ public class SignInPane {
 			public void handle(ActionEvent event) {
 				// change to signUp scene
 				SignUpPane signUp = new SignUpPane();
-				Main.changeScene(signUp.getSignUpscene());
+				Main.sceneController.changeScene(signUp.getSignUpscene());
 			}
 
 		});

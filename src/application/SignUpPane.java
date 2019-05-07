@@ -228,7 +228,7 @@ public class SignUpPane {
 					signUpSuccess.showAndWait();
 
 					SignInPane signIn = new SignInPane();
-					Main.changeScene(signIn.getSignInScene());
+					Main.sceneController.changeScene(signIn.getSignInScene());
 
 				} else {
 					// ... user chose CANCEL or closed the dialog

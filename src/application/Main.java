@@ -8,10 +8,14 @@ import javafx.scene.layout.VBox;
 public class Main extends Application {
 
 	private static Stage stage;
+	public static Controller controller;
+	public static SceneController sceneController;
 
 	@Override
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
+		controller = new Controller();
+		sceneController = new SceneController(stage);
 
 		try {
 			VBox root = new VBox(10);
@@ -30,10 +34,6 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 
-	}
-
-	public static void changeScene(Scene scene) {
-		stage.setScene(scene);
 	}
 
 	public static void main(String[] args) {
