@@ -119,7 +119,7 @@ public class SignInPane {
 		signInBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Map<String, String> userList = user.makeList();
+//				Map<String, String> userList = user.makeList();
 				if (!check.containsKey(getUserTextField())) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setContentText("Login fail");
