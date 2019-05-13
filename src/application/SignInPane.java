@@ -43,7 +43,7 @@ public class SignInPane {
 		Text scenetitle = new Text("LOGO");
 		rootPane.add(scenetitle, 0, 0, 2, 1);
 
-		Label userName = new Label("User Name:");
+		Label userName = new Label("Username:");
 		rootPane.add(userName, 0, 1);
 
 		userTextField = new TextField();
@@ -72,10 +72,10 @@ public class SignInPane {
 		// set style
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
 		scenetitle.setStyle("-fx-font-size: 32px; -fx-font-family:\"Arial Black\";-fx-fill: #555;");
-		signInBtn.setStyle(
-				"-fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: \"Arial Narrow\"; -fx-background-color: LEMONCHIFFON;");
-		signUpBtn.setStyle(
-				"-fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: \"Arial Narrow\"; -fx-background-color: LEMONCHIFFON;");
+//		signInBtn.setStyle(
+//				"-fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: \"Arial Narrow\"; -fx-background-color: LEMONCHIFFON;");
+//		signUpBtn.setStyle(
+//				"-fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: \"Arial Narrow\"; -fx-background-color: LEMONCHIFFON;");
 
 		// add handler
 		// press ESC to clear user text field
@@ -126,7 +126,7 @@ public class SignInPane {
 					Main.sceneController.changeScene(home.getHomeScene());
 				} catch (Exception e) {
 					Alert alert = new Alert(AlertType.ERROR);
-					alert.setContentText("Login fail");
+					alert.setContentText("Login failed");
 					alert.show();
 				}
 			}

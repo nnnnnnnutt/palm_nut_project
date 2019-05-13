@@ -12,10 +12,16 @@ public class UserInfo {
 		
 		Map<String, String> details = new HashMap<>();
 		details.put("password", "nnut98");
-		details.put("name", "Plakim");
-		details.put("lastName","Kaitao");
+		details.put("name", "Pimkunut");
+		details.put("lastName","Theerathitayankul");
 		
 		profiles.put("nnut98", details);
+		
+//		details.put("password", "palm");
+//		details.put("name", "Palmmanee");
+//		details.put("lastName","Kaitao");
+//		
+//		profiles.put("palm", details);
 		
 		Users = Collections.unmodifiableMap(profiles);
 	}

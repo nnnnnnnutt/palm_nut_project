@@ -15,7 +15,7 @@ public class Controller {
 	public void setCurrentUser(User user) {
 		this.currentUser = user;
 	}
-	public User getCurrentUser(User user) {
+	public User getCurrentUser() {
 		return this.currentUser;
 	}
 	
