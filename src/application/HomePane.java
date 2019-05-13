@@ -28,7 +28,7 @@ public class HomePane {
 	private ImageView voucherBtn;
 	public HomePane() {
 		
-		rootPane = new VBox(120);
+		rootPane = new VBox(100);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
 		
@@ -39,16 +39,16 @@ public class HomePane {
 		Label date = new Label(new Date().toString().substring(0, 10));
 		time.getChildren().addAll(date,clock);
 		
-//		VBox profile = new VBox(15);
-//		Label username = new Label(Main.controller.getCurrentUser().getUsername().toString());
-//		Label userInfo = new Label(Main.controller.getCurrentUser().getUsername().toString());// + " " + Main.controller.getCurrentUser().getLastName());
-//		profile.getChildren().addAll(username,userInfo);
+		VBox profile = new VBox(15);
+		Label username = new Label(Main.controller.getCurrentUser().getUsername().toString());
+		Label userInfo = new Label(Main.controller.getCurrentUser().getUsername().toString());// + " " + Main.controller.getCurrentUser().getLastName());
+		profile.getChildren().addAll(username,userInfo);
 		
 //		HBox header = new HBox(100);
 //		header.getChildren().addAll(time,profile);
 		
 		rootPane.getChildren().add(time);
-//		rootPane.getChildren().add(profile);
+		rootPane.getChildren().add(profile);
 		
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);

@@ -25,11 +25,11 @@ public class Main extends Application {
 		try {
 			VBox root = new VBox(10);
 
-//			SignInPane signIn = new SignInPane();
-//			root.getChildren().add(signIn.getRootPane());
+			SignInPane signIn = new SignInPane();
+			root.getChildren().add(signIn.getRootPane());
 			
-			HomePane home = new HomePane();
-			root.getChildren().add(home.getRootPane());
+//			HomePane home = new HomePane();
+//			root.getChildren().add(home.getRootPane());
 			Scene scene = new Scene(root, 700, 500);
 
 			stage.setScene(scene);
