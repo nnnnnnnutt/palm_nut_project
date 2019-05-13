@@ -1,13 +1,7 @@
 package logic;
 
-public class Restaurant implements Reservable,CsvAvailable{
-
-	@Override
-	public String getCsv() {
-		// TODO Auto-generated method stub
-		return "restaurant.csv";
-	}
-
+public class Restaurant extends IncludeImage implements Reservable{
+	private int queue;
 	@Override
 	public void reserve() {
 		// TODO Auto-generated method stub

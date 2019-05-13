@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -27,124 +28,120 @@ public class RestaurantOptionPane {
 	private ImageView buffetBtn;
 	private ImageView homeBtn;
 	private Button signOutBtn;
+
 	public RestaurantOptionPane() {
 		rootPane = new VBox(50);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
-		
-		
+
 		VBox time = new VBox(15);
-		time .setAlignment(Pos.CENTER_LEFT);
+		time.setAlignment(Pos.CENTER_LEFT);
 		DigitalClock clock = new DigitalClock();
 		Label date = new Label(new Date().toString().substring(0, 10));
-		time.getChildren().addAll(date,clock);
-		
+		time.getChildren().addAll(date, clock);
+
 		rootPane.getChildren().add(time);
-		
+
 		Pane menu = new Pane();
-		dessertBtn = new ImageView("Dessert.png");
+		dessertBtn = new ImageView(new Image(ClassLoader.getSystemResource("Dessert.png").toString()));
 		dessertBtn.setFitHeight(100);
 		dessertBtn.setFitWidth(100);
-		
+
 		dessertBtn.setLayoutX(335);
 		dessertBtn.setLayoutY(110);
-		
-		dessertBtn.setOnMouseEntered(e->{
+
+		dessertBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
 		});
-		dessertBtn.setOnMouseExited(e->{
+		dessertBtn.setOnMouseExited(e -> {
 			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		dessertBtn.setOnMouseClicked(e->{
+		dessertBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
-			//change to other scene
+			// change to other scene
 			SignUpPane signUp = new SignUpPane();
 			Main.sceneController.changeScene(signUp.getSignUpscene());
 		});
-		
-		
-		aLaCarteBtn = new ImageView("Alacarte.png");
+
+		aLaCarteBtn = new ImageView(new Image(ClassLoader.getSystemResource("Alacarte.png").toString()));
 		aLaCarteBtn.setFitHeight(100);
 		aLaCarteBtn.setFitWidth(100);
-		
+
 		aLaCarteBtn.setLayoutX(220);
 		aLaCarteBtn.setLayoutY(50);
-		
-		aLaCarteBtn.setOnMouseEntered(e->{
+
+		aLaCarteBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
 		});
-		aLaCarteBtn.setOnMouseExited(e->{
+		aLaCarteBtn.setOnMouseExited(e -> {
 			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		aLaCarteBtn.setOnMouseClicked(e->{
+		aLaCarteBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
-			//change to other scene
+			// change to other scene
 			SignUpPane signUp = new SignUpPane();
 			Main.sceneController.changeScene(signUp.getSignUpscene());
 		});
-		
-		
-		
-		buffetBtn = new ImageView("Buffet.png");
+
+		buffetBtn = new ImageView(new Image(ClassLoader.getSystemResource("Buffet.png").toString()));
 		buffetBtn.setFitHeight(100);
 		buffetBtn.setFitWidth(100);
-		
+
 		buffetBtn.setLayoutX(100);
 		buffetBtn.setLayoutY(0);
-		
-		buffetBtn.setOnMouseEntered(e->{
+
+		buffetBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
 		});
-		buffetBtn.setOnMouseExited(e->{
+		buffetBtn.setOnMouseExited(e -> {
 			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		buffetBtn.setOnMouseClicked(e->{
+		buffetBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
-			//change to other scene
+			// change to other scene
 			SignUpPane signUp = new SignUpPane();
 			Main.sceneController.changeScene(signUp.getSignUpscene());
 		});
-		
-		
-		homeBtn = new ImageView("Home.png");
+
+		homeBtn = new ImageView(new Image(ClassLoader.getSystemResource("Home.png").toString()));
 		homeBtn.setFitHeight(100);
 		homeBtn.setFitWidth(100);
-		
+
 		homeBtn.setLayoutX(450);
 		homeBtn.setLayoutY(150);
-		
-		homeBtn.setOnMouseEntered(e->{
+
+		homeBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
 		});
-		homeBtn.setOnMouseExited(e->{
+		homeBtn.setOnMouseExited(e -> {
 			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		homeBtn.setOnMouseClicked(e->{
+		homeBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
-			//change to other scene
+			// change to other scene
 			HomePane home = new HomePane();
 			Main.sceneController.changeScene(home.getHomeScene());
 		});
-		
+
 		Label des = new Label("Dessert");
 		des.setLayoutX(335);
 		des.setLayoutY(220);
-		
+
 		Label buf = new Label("Buffet");
 		buf.setLayoutX(100);
 		buf.setLayoutY(100);
-		
+
 		Label ala = new Label("A La Carte");
 		ala.setLayoutX(220);
 		ala.setLayoutY(160);
-		
+
 		Label home = new Label("Back to Homepage");
 		home.setLayoutX(450);
 		home.setLayoutY(260);
-		
-		menu.getChildren().addAll(buffetBtn,buf,aLaCarteBtn,ala,dessertBtn,des,homeBtn,home);
+
+		menu.getChildren().addAll(buffetBtn, buf, aLaCarteBtn, ala, dessertBtn, des, homeBtn, home);
 		rootPane.getChildren().add(menu);
-		
+
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		signOutBtn = new Button("Sign out");
@@ -161,34 +158,35 @@ public class RestaurantOptionPane {
 				signOutBtn.setPrefWidth(75);
 			}
 		});
-		signOutBtn.setOnAction(e ->{
+		signOutBtn.setOnAction(e -> {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
-			//alert.setHeaderText("Look, a Confirmation Dialog");
+			// alert.setHeaderText("Look, a Confirmation Dialog");
 			alert.setContentText("Are you sure for signing out?");
 
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK) {
 				// ... user chose OK -> change to sign in scene
-				
+
 				SignInPane signIn = new SignInPane();
 				Main.sceneController.changeScene(signIn.getSignInScene());
 			}
 		});
-		
+
 		hbBtn.getChildren().add(signOutBtn);
-		
+
 		rootPane.getChildren().add(hbBtn);
-		
-		RestaurantOptionScene = new Scene(rootPane,700,500);
-		
+
+		RestaurantOptionScene = new Scene(rootPane, 700, 500);
+
 	}
+
 	public Scene getRestaurantOptionScene() {
 		return RestaurantOptionScene;
 	}
+
 	public VBox getRootPane() {
 		return rootPane;
 	}
-	
-	
+
 }
