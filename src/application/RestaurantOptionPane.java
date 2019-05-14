@@ -3,21 +3,19 @@ package application;
 import java.util.Date;
 import java.util.Optional;
 
-import javafx.event.EventHandler;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import logic.ApplicationLogic;
 
@@ -28,10 +26,10 @@ public class RestaurantOptionPane {
 	private ImageView aLaCarteBtn;
 	private ImageView buffetBtn;
 	private ImageView homeBtn;
-	private Button signOutBtn;
+	private ImageView signOutBtn;
 
 	public RestaurantOptionPane() {
-		rootPane = new VBox(50);
+		rootPane = new VBox(120);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
 
@@ -43,13 +41,16 @@ public class RestaurantOptionPane {
 
 		rootPane.getChildren().add(time);
 
-		Pane menu = new Pane();
+		GridPane menu = new GridPane();
+		menu.setAlignment(Pos.CENTER);
+		menu.setHgap(55);
+		menu.setVgap(15);
+		
 		dessertBtn = new ImageView(new Image(ClassLoader.getSystemResource("Dessert.png").toString()));
 		dessertBtn.setFitHeight(100);
 		dessertBtn.setFitWidth(100);
-
-		dessertBtn.setLayoutX(335);
-		dessertBtn.setLayoutY(110);
+//		dessertBtn.setLayoutX(335);
+//		dessertBtn.setLayoutY(110);
 
 		dessertBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
@@ -64,13 +65,14 @@ public class RestaurantOptionPane {
 			DessertScreen dessert = new DessertScreen(logic.getAllDesserts());
 			Main.sceneController.changeScene(dessert.getDessertScreenScene());
 		});
+		
 
 		aLaCarteBtn = new ImageView(new Image(ClassLoader.getSystemResource("Alacarte.png").toString()));
 		aLaCarteBtn.setFitHeight(100);
 		aLaCarteBtn.setFitWidth(100);
 
-		aLaCarteBtn.setLayoutX(220);
-		aLaCarteBtn.setLayoutY(50);
+//		aLaCarteBtn.setLayoutX(220);
+//		aLaCarteBtn.setLayoutY(50);
 
 		aLaCarteBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
@@ -81,16 +83,17 @@ public class RestaurantOptionPane {
 		aLaCarteBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			SignUpPane signUp = new SignUpPane();
-			Main.sceneController.changeScene(signUp.getSignUpscene());
+			ApplicationLogic logic = new ApplicationLogic();
+			ALaCarteScreen ala = new ALaCarteScreen(logic.getAllALaCartes());
+			Main.sceneController.changeScene(ala.getALaCarteScreenScene());
 		});
 
 		buffetBtn = new ImageView(new Image(ClassLoader.getSystemResource("Buffet.png").toString()));
 		buffetBtn.setFitHeight(100);
 		buffetBtn.setFitWidth(100);
 
-		buffetBtn.setLayoutX(100);
-		buffetBtn.setLayoutY(0);
+//		buffetBtn.setLayoutX(100);
+//		buffetBtn.setLayoutY(0);
 
 		buffetBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
@@ -101,16 +104,17 @@ public class RestaurantOptionPane {
 		buffetBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			SignUpPane signUp = new SignUpPane();
-			Main.sceneController.changeScene(signUp.getSignUpscene());
+			ApplicationLogic logic = new ApplicationLogic();
+			BuffetScreen buffet = new BuffetScreen(logic.getAllBuffets());
+			Main.sceneController.changeScene(buffet.getBuffetScreenScene());
 		});
 
 		homeBtn = new ImageView(new Image(ClassLoader.getSystemResource("Home.png").toString()));
-		homeBtn.setFitHeight(100);
-		homeBtn.setFitWidth(100);
+		homeBtn.setFitHeight(40);
+		homeBtn.setFitWidth(40);
 
-		homeBtn.setLayoutX(450);
-		homeBtn.setLayoutY(150);
+//		homeBtn.setLayoutX(450);
+//		homeBtn.setLayoutY(150);
 
 		homeBtn.setOnMouseEntered(e -> {
 			rootPane.setCursor(Cursor.HAND);
@@ -126,41 +130,40 @@ public class RestaurantOptionPane {
 		});
 
 		Label des = new Label("Dessert");
-		des.setLayoutX(335);
-		des.setLayoutY(220);
+		des.setAlignment(Pos.CENTER);
 
 		Label buf = new Label("Buffet");
-		buf.setLayoutX(100);
-		buf.setLayoutY(100);
+		buf.setAlignment(Pos.CENTER);
 
 		Label ala = new Label("A La Carte");
-		ala.setLayoutX(220);
-		ala.setLayoutY(160);
-
-		Label home = new Label("Back to Homepage");
-		home.setLayoutX(450);
-		home.setLayoutY(260);
-
-		menu.getChildren().addAll(buffetBtn, buf, aLaCarteBtn, ala, dessertBtn, des, homeBtn, home);
+		ala.setAlignment(Pos.CENTER);
+		
+		menu.add(buffetBtn, 0, 0);
+		menu.add(buf, 0, 1);
+		menu.add(aLaCarteBtn, 1, 0);
+		menu.add(ala, 1, 1);
+		menu.add(dessertBtn, 2, 0);
+		menu.add(des, 2, 1);
+//		menu.getChildren().addAll(buffetBtn, buf, aLaCarteBtn, ala, dessertBtn, des, homeBtn, home);
 		rootPane.getChildren().add(menu);
+
 
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-		signOutBtn = new Button("Sign out");
-		signOutBtn.setPrefWidth(75);
-		signOutBtn.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				signOutBtn.setPrefWidth(85);
-			}
+		signOutBtn = new ImageView(new Image(ClassLoader.getSystemResource("logout.png").toString()));
+		signOutBtn.setFitHeight(40);
+		signOutBtn.setFitWidth(40);
+
+
+		signOutBtn.setOnMouseEntered(e -> {
+			rootPane.setCursor(Cursor.HAND);
 		});
-		signOutBtn.setOnMouseExited(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				signOutBtn.setPrefWidth(75);
-			}
+		signOutBtn.setOnMouseExited(e -> {
+			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		signOutBtn.setOnAction(e -> {
+		signOutBtn.setOnMouseClicked(e -> {
+			rootPane.setCursor(javafx.scene.Cursor.HAND);
+			// change to other scene
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			// alert.setHeaderText("Look, a Confirmation Dialog");
@@ -175,7 +178,7 @@ public class RestaurantOptionPane {
 			}
 		});
 
-		hbBtn.getChildren().add(signOutBtn);
+		hbBtn.getChildren().addAll(homeBtn, signOutBtn);
 
 		rootPane.getChildren().add(hbBtn);
 

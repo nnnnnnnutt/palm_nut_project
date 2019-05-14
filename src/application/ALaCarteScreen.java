@@ -19,16 +19,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.Dessert;
+import logic.ALaCarte;
 import logic.User;
 
-public class DessertScreen {
+public class ALaCarteScreen {
 	private VBox rootPane;
-	private Scene DessertScreenScene;
+	private Scene ALaCarteScreenScene;
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public DessertScreen(ArrayList<Dessert> desserts) {
+	public ALaCarteScreen(ArrayList<ALaCarte> ala) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
@@ -62,8 +62,8 @@ public class DessertScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Dessert des: desserts) {
-			DessertPane pane = new DessertPane(des);
+		for(ALaCarte alacarte: ala) {
+			ALaCartePane pane = new ALaCartePane(alacarte);
 			vpane.getChildren().add(pane);
 		}
 		
@@ -128,7 +128,7 @@ public class DessertScreen {
 	    VBox.setVgrow(scrollPane, Priority.ALWAYS);
 	    HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		
-		DessertScreenScene = new Scene(scrollPane,700,500);
+	    ALaCarteScreenScene = new Scene(scrollPane,700,500);
 	
 	}
 
@@ -136,8 +136,8 @@ public class DessertScreen {
 		return rootPane;
 	}
 
-	public Scene getDessertScreenScene() {
-		return DessertScreenScene;
+	public Scene getALaCarteScreenScene() {
+		return ALaCarteScreenScene;
 	}
 	
 	

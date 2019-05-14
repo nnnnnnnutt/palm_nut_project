@@ -19,16 +19,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.Dessert;
+import logic.Buffet;
 import logic.User;
 
-public class DessertScreen {
+public class BuffetScreen {
 	private VBox rootPane;
-	private Scene DessertScreenScene;
+	private Scene BuffetScreenScene;
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public DessertScreen(ArrayList<Dessert> desserts) {
+	public BuffetScreen(ArrayList<Buffet> buffets) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:MISTYROSE;");
@@ -62,8 +62,8 @@ public class DessertScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Dessert des: desserts) {
-			DessertPane pane = new DessertPane(des);
+		for(Buffet buf: buffets) {
+			BuffetPane pane = new BuffetPane(buf);
 			vpane.getChildren().add(pane);
 		}
 		
@@ -128,7 +128,7 @@ public class DessertScreen {
 	    VBox.setVgrow(scrollPane, Priority.ALWAYS);
 	    HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		
-		DessertScreenScene = new Scene(scrollPane,700,500);
+		BuffetScreenScene = new Scene(scrollPane,700,500);
 	
 	}
 
@@ -136,8 +136,8 @@ public class DessertScreen {
 		return rootPane;
 	}
 
-	public Scene getDessertScreenScene() {
-		return DessertScreenScene;
+	public Scene getBuffetScreenScene() {
+		return BuffetScreenScene;
 	}
 	
 	

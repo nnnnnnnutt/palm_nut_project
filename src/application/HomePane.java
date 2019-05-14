@@ -3,19 +3,16 @@ package application;
 import java.util.Date;
 import java.util.Optional;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,7 +21,7 @@ import logic.User;
 public class HomePane {
 	private Scene homeScene;
 	private VBox rootPane;
-	private Button signOutBtn;
+	private ImageView signOutBtn;
 	private ImageView accommodationBtn;
 	private ImageView restaurantBtn;
 	private ImageView voucherBtn;
@@ -57,21 +54,20 @@ public class HomePane {
 
 		HBox hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-		signOutBtn = new Button("Sign out");
-		signOutBtn.setPrefWidth(75);
-		signOutBtn.setOnMouseEntered(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				signOutBtn.setPrefWidth(85);
-			}
+		signOutBtn = new ImageView(new Image(ClassLoader.getSystemResource("logout.png").toString()));
+		signOutBtn.setFitHeight(40);
+		signOutBtn.setFitWidth(40);
+
+
+		signOutBtn.setOnMouseEntered(e -> {
+			rootPane.setCursor(Cursor.HAND);
 		});
-		signOutBtn.setOnMouseExited(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event) {
-				signOutBtn.setPrefWidth(75);
-			}
+		signOutBtn.setOnMouseExited(e -> {
+			rootPane.setCursor(Cursor.DEFAULT);
 		});
-		signOutBtn.setOnAction(e -> {
+		signOutBtn.setOnMouseClicked(e -> {
+			rootPane.setCursor(javafx.scene.Cursor.HAND);
+			// change to other scene
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Dialog");
 			// alert.setHeaderText("Look, a Confirmation Dialog");
@@ -85,6 +81,7 @@ public class HomePane {
 				Main.sceneController.changeScene(signIn.getSignInScene());
 			}
 		});
+		
 		hbBtn.getChildren().add(signOutBtn);
 
 		GridPane menu = new GridPane();
@@ -158,9 +155,6 @@ public class HomePane {
 		return homeScene;
 	}
 
-	public Button getSignOutBtn() {
-		return signOutBtn;
-	}
 
 	public VBox getRootPane() {
 		return rootPane;

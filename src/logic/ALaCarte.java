@@ -7,17 +7,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Dessert extends IncludeImage implements CsvAvailable {
+public class ALaCarte extends IncludeImage implements CsvAvailable {
 	
 	private String name;
 	private String location;
 	private int queue;
 	
 	
-	public Dessert() {
+	public ALaCarte() {
 		super();
 	}
-	public Dessert(String name, String location, int queue) {
+	public ALaCarte(String name, String location, int queue) {
 		//super(location, location, queue);
 		this.name = name;
 		this.location = location;
@@ -44,14 +44,14 @@ public class Dessert extends IncludeImage implements CsvAvailable {
 	@Override
 	public String getCsv() {
 		// TODO Auto-generated method stub
-		return "Dessert.csv";
+		return "ALaCarte.csv";
 	}
 	
-	public ArrayList<Dessert> makeList() {
+	public ArrayList<ALaCarte> makeList() {
 		  BufferedReader br = null;
 		  String line = "";
 		  String cvsSplitBy = ",";
-		  ArrayList<Dessert> data = new ArrayList<Dessert>();
+		  ArrayList<ALaCarte> data = new ArrayList<ALaCarte>();
 		  try {
 			  InputStream in = ClassLoader.getSystemResourceAsStream(this.getCsv());
 		      br = new BufferedReader(new InputStreamReader(in));
@@ -61,7 +61,7 @@ public class Dessert extends IncludeImage implements CsvAvailable {
 		    		  String name = csvdata[0];
 		    		  String location = csvdata[1];
 		    		  int queue = Integer.parseInt(csvdata[2]);
-		    		  Dessert newdata = new Dessert(name,location,queue);
+		    		  ALaCarte newdata = new ALaCarte(name,location,queue);
 			          data.add(newdata);
 		      }
 		   } catch (FileNotFoundException e) {
