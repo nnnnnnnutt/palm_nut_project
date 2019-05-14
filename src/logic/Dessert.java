@@ -7,16 +7,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Dessert extends Restaurant implements CsvAvailable {
+public class Dessert extends IncludeImage implements CsvAvailable {
 	
 	private String name;
 	private String location;
 	private int queue;
 	
 	
-	
-	public Dessert(String name, String location, int queue) {
+	public Dessert() {
 		super();
+	}
+	public Dessert(String name, String location, int queue) {
+		//super(location, location, queue);
 		this.name = name;
 		this.location = location;
 		this.queue = queue;

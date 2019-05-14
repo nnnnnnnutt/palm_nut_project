@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import logic.ApplicationLogic;
 
 public class RestaurantOptionPane {
 	private Scene RestaurantOptionScene;
@@ -59,8 +60,9 @@ public class RestaurantOptionPane {
 		dessertBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			SignUpPane signUp = new SignUpPane();
-			Main.sceneController.changeScene(signUp.getSignUpscene());
+			ApplicationLogic logic = new ApplicationLogic();
+			DessertScreen dessert = new DessertScreen(logic.getAllDesserts());
+			Main.sceneController.changeScene(dessert.getDessertScreenScene());
 		});
 
 		aLaCarteBtn = new ImageView(new Image(ClassLoader.getSystemResource("Alacarte.png").toString()));
