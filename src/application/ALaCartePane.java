@@ -61,7 +61,7 @@ public class ALaCartePane extends HBox {
 		
 		
 		VBox vBox = new VBox(); 
-		vBox.setAlignment(Pos.CENTER);
+		vBox.setAlignment(Pos.TOP_LEFT);
 		vBox.getChildren().addAll(name,location);
 		
 		getChildren().addAll(img,vBox,queue);

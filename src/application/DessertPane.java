@@ -15,7 +15,7 @@ public class DessertPane extends HBox {
 
 	public DessertPane(Dessert dessert) {
 		super(10);
-		setPrefWidth(500);
+		setPrefWidth(700);
 		setPrefHeight(100);
 		setAlignment(Pos.CENTER_LEFT);
 		setStyle("-fx-background-color:MISTYROSE;");
@@ -61,7 +61,8 @@ public class DessertPane extends HBox {
 		
 		
 		VBox vBox = new VBox(); 
-		vBox.setAlignment(Pos.CENTER);
+		vBox.setAlignment(Pos.TOP_LEFT);
+		vBox.setPrefWidth(250);
 		vBox.getChildren().addAll(name,location);
 		
 		getChildren().addAll(img,vBox,queue);
