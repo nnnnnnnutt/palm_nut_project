@@ -70,7 +70,7 @@ public class SignInPane {
 		signInScene = new Scene(rootPane, 700, 500);
 
 		// set style
-		rootPane.setStyle("-fx-background-color:MISTYROSE;");
+		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
 		scenetitle.setStyle("-fx-font-size: 32px; -fx-font-family:\"Arial Black\";-fx-fill: #555;");
 //		signInBtn.setStyle(
 //				"-fx-text-fill: black; -fx-font-weight: bold; -fx-font-family: \"Arial Narrow\"; -fx-background-color: LEMONCHIFFON;");

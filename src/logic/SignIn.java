@@ -5,6 +5,7 @@ import java.util.Map;
 import application.Main;
 
 public class SignIn {
+	
 	public Map<String, String> signIn(String username, String password) throws Exception {
 		boolean check = this.check(username, password);
 		if (!check) {

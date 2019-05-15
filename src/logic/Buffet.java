@@ -12,16 +12,18 @@ public class Buffet extends IncludeImage implements CsvAvailable {
 	private String name;
 	private String location;
 	private int queue;
+	private int price;
 	
 	
 	public Buffet() {
 		super();
 	}
-	public Buffet(String name, String location, int queue) {
+	public Buffet(String name, String location, int queue,int price) {
 		//super(location, location, queue);
 		this.name = name;
 		this.location = location;
 		this.queue = queue;
+		this.price = price;
 		try {
 			setImage(getName()+".jpg");
 		} catch (NullPointerException e) {
@@ -40,7 +42,24 @@ public class Buffet extends IncludeImage implements CsvAvailable {
 	public int getQueue() {
 		return queue;
 	}
+	
+	
 
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public void setQueue(int queue) {
+		this.queue = queue;
+	}
 	@Override
 	public String getCsv() {
 		// TODO Auto-generated method stub
@@ -61,7 +80,8 @@ public class Buffet extends IncludeImage implements CsvAvailable {
 		    		  String name = csvdata[0];
 		    		  String location = csvdata[1];
 		    		  int queue = Integer.parseInt(csvdata[2]);
-		    		  Buffet newdata = new Buffet(name,location,queue);
+		    		 // int price = Integer.parseInt(csvdata[3]);
+		    		  Buffet newdata = new Buffet(name,location,queue,price);
 			          data.add(newdata);
 		      }
 		   } catch (FileNotFoundException e) {

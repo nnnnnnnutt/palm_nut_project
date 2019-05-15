@@ -31,7 +31,7 @@ public class ALaCarteScreen {
 	public ALaCarteScreen(ArrayList<ALaCarte> ala) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
-		rootPane.setStyle("-fx-background-color:MISTYROSE;");
+		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
 		
 		VBox time = new VBox(15);
 		time.setAlignment(Pos.CENTER_LEFT);

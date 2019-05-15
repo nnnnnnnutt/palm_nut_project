@@ -12,16 +12,17 @@ public class Dessert extends IncludeImage implements CsvAvailable {
 	private String name;
 	private String location;
 	private int queue;
-	
+	private String url;
 	
 	public Dessert() {
 		super();
 	}
-	public Dessert(String name, String location, int queue) {
+	public Dessert(String name, String location, int queue,String url) {
 		//super(location, location, queue);
 		this.name = name;
 		this.location = location;
 		this.queue = queue;
+		this.url = url;
 		try {
 			setImage(getName()+".jpg");
 		} catch (NullPointerException e) {
@@ -40,7 +41,12 @@ public class Dessert extends IncludeImage implements CsvAvailable {
 	public int getQueue() {
 		return queue;
 	}
+	
+	
 
+	public String getUrl() {
+		return url;
+	}
 	@Override
 	public String getCsv() {
 		// TODO Auto-generated method stub
@@ -61,7 +67,8 @@ public class Dessert extends IncludeImage implements CsvAvailable {
 		    		  String name = csvdata[0];
 		    		  String location = csvdata[1];
 		    		  int queue = Integer.parseInt(csvdata[2]);
-		    		  Dessert newdata = new Dessert(name,location,queue);
+		    		  String url = csvdata[3];
+		    		  Dessert newdata = new Dessert(name,location,queue,url);
 			          data.add(newdata);
 		      }
 		   } catch (FileNotFoundException e) {

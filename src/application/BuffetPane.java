@@ -18,7 +18,7 @@ public class BuffetPane extends HBox {
 		setPrefWidth(500);
 		setPrefHeight(100);
 		setAlignment(Pos.CENTER_LEFT);
-		setStyle("-fx-background-color:MISTYROSE;");
+		setStyle("-fx-background-color:BLANCHEDALMOND;");
 		setPadding(new Insets(5,20,5,20));
 		setSpacing(20);
 		

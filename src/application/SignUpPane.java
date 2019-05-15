@@ -117,7 +117,7 @@ public class SignUpPane {
 		SignUpscene = new Scene(rootPane, 700, 500);
 
 		// set style
-		rootPane.setStyle("-fx-background-color:MISTYROSE;");
+		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
 		scenetitle.setStyle("-fx-font-size: 32px; -fx-font-family:\"Arial Black\";-fx-fill: #555;");
 
 		// add handler

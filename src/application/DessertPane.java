@@ -3,6 +3,8 @@ package application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import logic.Dessert;
+import logic.Restaurant;
 
 public class DessertPane extends HBox {
 
@@ -18,20 +21,21 @@ public class DessertPane extends HBox {
 		setPrefWidth(700);
 		setPrefHeight(100);
 		setAlignment(Pos.CENTER_LEFT);
-		setStyle("-fx-background-color:MISTYROSE;");
+		setStyle("-fx-background-color:BLANCHEDALMOND;");
 		setPadding(new Insets(5,20,5,20));
 		setSpacing(20);
 		
-		String url;
-		switch(dessert.getName()) {
-			case "Sweet Circle" : url = "Sweet Circle.jpg"; break;
-			case "MO & MOSHI" : url = "MO & MOSHI.jpg"; break;
-			case "Coffee Beans By Dao" : url = "Coffee Beans By Dao.jpg"; break;
-			case "Creamery Boutique Ice Creams"	: url = "Creamery Boutique Ice Creams.jpg"; break;
-			default : url = "After you Dessert Cafe.jpg";
-		}
-		
-		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(url).toString()));
+//		String url;
+//		switch(dessert.getName()) {
+//			case "Sweet_Circle" : url = "Sweet Circle.jpg"; break;
+//			case "MO & MOSHI" : url = "MO & MOSHI.jpg"; break;
+//			case "Coffee Beans By Dao" : url = "Coffee Beans By Dao.jpg"; break;
+//			case "Creamery Boutique Ice Creams"	: url = "Creamery Boutique Ice Creams.jpg"; break;
+//			default : url = "After you Dessert Cafe.jpg";
+//		}
+//		String url = dessert.getName()+".jpg";
+//		System.out.println(url);
+		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource((dessert.getUrl())+".jpg").toString()));
 		img.setFitHeight(80); 
 		img.setFitWidth(80);
 		img.setPreserveRatio(true);
@@ -44,9 +48,12 @@ public class DessertPane extends HBox {
 		});
 		img.setOnMouseClicked(e -> {
 			setCursor(javafx.scene.Cursor.HAND);
-			// change to other scene
-			HomePane home = new HomePane();
-			Main.sceneController.changeScene(home.getHomeScene());
+			Restaurant res = new Restaurant();
+			if(!res.isWaiting()) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setContentText("Yeah");
+				alert.show();
+			}
 		});
 		
 		Label name = new Label(dessert.getName());

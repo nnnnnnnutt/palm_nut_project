@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logic.ApplicationLogic;
+import logic.User;
 
 public class RestaurantOptionPane {
 	private Scene RestaurantOptionScene;
@@ -31,15 +32,33 @@ public class RestaurantOptionPane {
 	public RestaurantOptionPane() {
 		rootPane = new VBox(120);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
-		rootPane.setStyle("-fx-background-color:MISTYROSE;");
+		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
 
 		VBox time = new VBox(15);
 		time.setAlignment(Pos.CENTER_LEFT);
 		DigitalClock clock = new DigitalClock();
 		Label date = new Label(new Date().toString().substring(0, 10));
 		time.getChildren().addAll(date, clock);
-
-		rootPane.getChildren().add(time);
+		User currentUser = Main.controller.getCurrentUser();
+		if (currentUser != null) {
+			VBox profile = new VBox(15);
+			Label username = new Label(currentUser.getUsername());
+			Label userInfo = new Label(currentUser.getName() + " " + currentUser.getLastName());
+			profile.getChildren().addAll(username,userInfo);
+			HBox image = new HBox(10);
+			ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(currentUser.getUsername() +".png").toString())); 
+			img.setFitHeight(80);
+			img.setFitWidth(80);
+			image.getChildren().addAll(profile,img);
+			HBox header = new HBox(20);
+			header.getChildren().addAll(time,image);
+			rootPane.getChildren().addAll(header);
+		}
+		else {
+			rootPane.getChildren().add(time);
+		}
+		
+		//rootPane.getChildren().add(time);
 
 		GridPane menu = new GridPane();
 		menu.setAlignment(Pos.CENTER);
