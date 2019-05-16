@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import logic.CSVLogic;
 import logic.User;
 import logic.Voucher;

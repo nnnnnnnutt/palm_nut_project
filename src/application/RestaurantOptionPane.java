@@ -17,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import logic.CSVLogic;
 import logic.User;
 
 public class RestaurantOptionPane {
@@ -39,19 +38,15 @@ public class RestaurantOptionPane {
 		DigitalClock clock = new DigitalClock();
 		Label date = new Label(new Date().toString().substring(0, 10));
 		time.getChildren().addAll(date, clock);
+		
 		User currentUser = Main.controller.getCurrentUser();
 		if (currentUser != null) {
 			VBox profile = new VBox(15);
 			Label username = new Label(currentUser.getUsername());
 			Label userInfo = new Label(currentUser.getName() + " " + currentUser.getLastName());
 			profile.getChildren().addAll(username,userInfo);
-			HBox image = new HBox(10);
-			ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(currentUser.getUsername() +".png").toString())); 
-			img.setFitHeight(80);
-			img.setFitWidth(80);
-			image.getChildren().addAll(profile,img);
 			HBox header = new HBox(20);
-			header.getChildren().addAll(time,image);
+			header.getChildren().addAll(time);
 			rootPane.getChildren().addAll(header);
 		}
 		else {

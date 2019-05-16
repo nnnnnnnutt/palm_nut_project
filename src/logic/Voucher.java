@@ -44,6 +44,7 @@ public class Voucher {
 	}
 	
 	public boolean use(Object o) {
+		if ( this.uses <= 0) return false;
 		if (o instanceof Discountable) {
 			Discountable d = (Discountable) o;
 			// Check type
@@ -64,13 +65,10 @@ public class Voucher {
 				return false;
 			}
 		}
-		if (this.uses > 0) {
-			this.uses -= 1;
-			Main.controller.addToHistory(this);
-			return true;
-		} else {
-			return false;
-		}
+
+		this.uses -= 1;
+		Main.controller.addToHistory(this);
+		return true;
 	}
 	
 }

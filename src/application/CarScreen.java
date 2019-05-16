@@ -24,7 +24,7 @@ import logic.User;
 
 public class CarScreen {
 	private VBox rootPane;
-	private static Scene CarScreenScene;
+	private Scene CarScreenScene;
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
@@ -138,7 +138,7 @@ public class CarScreen {
 		return rootPane;
 	}
 
-	public static Scene getCarScreenScene() {
+	public Scene getCarScreenScene() {
 		return CarScreenScene;
 	}
 	

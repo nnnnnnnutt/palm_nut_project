@@ -22,10 +22,9 @@ public class CarPane extends HBox {
 		setPadding(new Insets(5,20,5,20));
 		setSpacing(20);
 		
-		
 		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(car.getUrl()+".jpg").toString()));
-		img.setFitHeight(80); 
-		img.setFitWidth(80);
+		img.setFitHeight(100); 
+		img.setFitWidth(100);
 		img.setPreserveRatio(true);
 		
 		img.setOnMouseEntered(e -> {

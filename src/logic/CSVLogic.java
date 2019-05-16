@@ -12,12 +12,17 @@ public class CSVLogic {
 	private ArrayList<Object> allBuffets;
 	private ArrayList<Object> allALaCartes;
 	private ArrayList<Object> allCars;
-
+	private ArrayList<Object> allHotels;
+	private ArrayList<Object> allHostels;
+	private ArrayList<Object> allGuesthouses;
+	private ArrayList<Object> allVouchers;
+	
 	public CSVLogic() {
 		allDesserts = this.makeList("dessert");
 		allBuffets = this.makeList("buffet");
 		allALaCartes = this.makeList("alacarte");
 		allCars = this.makeList("car");
+		allVouchers = this.makeList("voucher");
 	}
 
 	public ArrayList<Object> getAllDesserts() {
@@ -33,6 +38,24 @@ public class CSVLogic {
 	}
 	public ArrayList<Object> getAllCars() {
 		return allCars;
+	}
+	
+
+	public ArrayList<Object> getAllHotels() {
+		return allHotels;
+	}
+
+	public ArrayList<Object> getAllHostels() {
+		return allHostels;
+	}
+
+	public ArrayList<Object> getAllGuesthouses() {
+		return allGuesthouses;
+	}
+	
+
+	public ArrayList<Object> getAllVouchers() {
+		return allVouchers;
 	}
 
 	private ArrayList<Object> makeList(String type) {
@@ -55,6 +78,9 @@ public class CSVLogic {
 		case "car":
 			fileName = "Car.csv";
 			break;
+		case "voucher":
+			fileName = "Voucher.csv";
+			break;
 		default:
 			return data;
 		}
@@ -73,7 +99,14 @@ public class CSVLogic {
 				Object newdata;
 
 				String licensePlate = new String();
-
+				String info = new String();
+				int rating = 0;
+				
+				String promoCode = new String();
+				String description = new String();
+				int percent = 0;
+				int uses = 0;
+				int category = 0;
 				switch (type) {
 				case "dessert":
 				case "alacarte":
@@ -99,6 +132,27 @@ public class CSVLogic {
 					url = csvdata[2];
 					price = Integer.parseInt(csvdata[3]);
 					newdata = new Car(name, price, url, licensePlate, false);
+					data.add(newdata);
+					break;
+				case "hotel":
+				case "hostel":
+				case "guesthouse":
+					name = csvdata[0];
+					rating = Integer.parseInt(csvdata[1]);
+					location = csvdata[2];
+					price = Integer.parseInt(csvdata[3]);
+					info = csvdata[4];
+					url = csvdata[5];
+					newdata = new Accommodation(name,price,url,rating,location,info,0,0);
+					data.add(newdata);
+					break;
+				case "voucher":
+					promoCode = csvdata[0];
+					percent = Integer.parseInt(csvdata[1]);
+					description = csvdata[2];
+					uses = Integer.parseInt(csvdata[3]);
+					category = Integer.parseInt(csvdata[4]);
+					newdata = new Voucher(promoCode,percent,description,uses,category);
 					data.add(newdata);
 					break;
 				default:

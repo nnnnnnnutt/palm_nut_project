@@ -12,23 +12,22 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.Accommodation;
 import logic.User;
 
-public class GuesthouseScreen {
+public class HistoryScreen {
 	private VBox rootPane;
-	private Scene GuesthouseScreenScene;
+	private Scene HistoryScreenScene;
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public GuesthouseScreen(ArrayList<Object> guesthouses) {
+	public HistoryScreen(ArrayList<Object> histories) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
@@ -62,10 +61,9 @@ public class GuesthouseScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Object guest: guesthouses) {
-			Accommodation guesthouse = (Accommodation) guest;
-			GuesthousePane pane = new GuesthousePane(guesthouse);
-			vpane.getChildren().add(pane);
+		for(Object his: histories) {
+			HistoryPane historyPane = new HistoryPane(his);
+			vpane.getChildren().add(historyPane);
 		}
 		
 		
@@ -129,7 +127,7 @@ public class GuesthouseScreen {
 	    VBox.setVgrow(scrollPane, Priority.ALWAYS);
 	    HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		
-	    GuesthouseScreenScene = new Scene(scrollPane,700,500);
+	    HistoryScreenScene = new Scene(scrollPane,700,500);
 	
 	}
 
@@ -137,7 +135,9 @@ public class GuesthouseScreen {
 		return rootPane;
 	}
 
-	public Scene getGuesthouseScreenScene() {
-		return GuesthouseScreenScene;
+	public Scene getHistoryScreenScene() {
+		return HistoryScreenScene;
 	}
+	
+	
 }

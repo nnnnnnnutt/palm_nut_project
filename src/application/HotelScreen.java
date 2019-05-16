@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.ALaCarte;
+import logic.Accommodation;
 import logic.User;
 
 public class HotelScreen {
@@ -62,9 +62,11 @@ public class HotelScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Object hotel: hotel) {
-			Hotel hotel = new HotelPane(hotel);
+		for(Object hot: hotel) {
+			Accommodation hote = (Accommodation) hot;
+			HotelPane pane = new HotelPane(hote);
 			vpane.getChildren().add(pane);
+	
 		}
 		
 		

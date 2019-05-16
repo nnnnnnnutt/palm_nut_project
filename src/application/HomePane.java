@@ -46,13 +46,8 @@ public class HomePane {
 			Label username = new Label(currentUser.getUsername());
 			Label userInfo = new Label(currentUser.getName() + " " + currentUser.getLastName());
 			profile.getChildren().addAll(username,userInfo);
-			HBox image = new HBox(10);
-			ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(currentUser.getUsername() +".png").toString())); 
-			img.setFitHeight(80);
-			img.setFitWidth(80);
-			image.getChildren().addAll(profile,img);
 			HBox header = new HBox(20);
-			header.getChildren().addAll(time,image);
+			header.getChildren().addAll(time);
 			rootPane.getChildren().addAll(header);
 		}
 		else {
@@ -141,7 +136,9 @@ public class HomePane {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to Accomodation choose scene
 			
-			Main.sceneController.changeScene(CarScreen.getCarScreenScene());
+			CarScreen car = new CarScreen(Main.controller.data.getAllCars());
+			Main.sceneController.changeScene(car.getCarScreenScene());
+			
 		});
 		
 		historyBtn = new ImageView(new Image(ClassLoader.getSystemResource("history.png").toString()));
@@ -157,8 +154,8 @@ public class HomePane {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to Accomodation choose scene
 
-			AccommodationOptionPane accOp = new AccommodationOptionPane();
-			Main.sceneController.changeScene(accOp.getAccommodationOptionScene());
+			HistoryScreen his = new HistoryScreen(Main.controller.getHistory());
+			Main.sceneController.changeScene(his.getHistoryScreenScene());
 		});
 		
 		voucherBtn = new ImageView(new Image(ClassLoader.getSystemResource("Voucher.png").toString()));
@@ -171,8 +168,8 @@ public class HomePane {
 		voucherBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to Restaurant choose scene
-			VoucherPane voucher = new VoucherPane();
-			Main.sceneController.changeScene(voucher.getVoucherPaneScene());
+			VoucherScreen voucher = new VoucherScreen(Main.controller.data.getAllVouchers());
+			Main.sceneController.changeScene(voucher.getVoucherScreenScene());
 		});
 		voucherBtn.setFitHeight(100);
 		voucherBtn.setFitWidth(100);

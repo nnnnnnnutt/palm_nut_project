@@ -9,11 +9,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import logic.Hotel;
+import logic.Accommodation;
 
 public class HotelPane extends HBox{
 	
-	public HotelPane(Hotel hotel) {
+	public HotelPane(Accommodation hotel) {
 		super(10);
 		setPrefWidth(500);
 		setPrefHeight(100);
@@ -23,7 +23,7 @@ public class HotelPane extends HBox{
 		setSpacing(20);
 		
 		
-		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(hotel.getName()+” Pathumwan princess hotel.jpg).toString()));
+		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(hotel.getName()+".jpg").toString()));
 		img.setFitHeight(80); 
 		img.setFitWidth(80);
 		img.setPreserveRatio(true);
@@ -45,7 +45,7 @@ public class HotelPane extends HBox{
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
-		Label rating = new Label(hotel.getRating());
+		Label rating = new Label(String.valueOf(hotel.getRating()));
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
@@ -53,7 +53,7 @@ public class HotelPane extends HBox{
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
-		Label price = new Label(hotel.getPrice());
+		Label price = new Label(String.valueOf(hotel.getPrice()));
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		

@@ -9,9 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import logic.Accommodation;
 
 public class GuesthousePane  extends HBox{
-	public GuesthousePane(Guesthouse guesthouse) {
+	public GuesthousePane(Accommodation guesthouse) {
 		super(10);
 		setPrefWidth(500);
 		setPrefHeight(100);
@@ -43,7 +44,7 @@ public class GuesthousePane  extends HBox{
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
-		Label rating = new Label(guesthouse.getRating());
+		Label rating = new Label(String.valueOf(guesthouse.getRating()));
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
@@ -51,7 +52,7 @@ public class GuesthousePane  extends HBox{
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
-		Label price = new Label(guesthouse.getPrice());
+		Label price = new Label(String.valueOf(guesthouse.getPrice()));
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
