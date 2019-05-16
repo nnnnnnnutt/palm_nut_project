@@ -9,11 +9,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import logic.Buffet;
+import logic.Car;
 
-public class BuffetPane extends HBox {
+public class CarPane extends HBox {
 
-	public BuffetPane(Buffet buffet) {
+	public CarPane(Car car) {
 		super(10);
 		setPrefWidth(500);
 		setPrefHeight(100);
@@ -23,7 +23,7 @@ public class BuffetPane extends HBox {
 		setSpacing(20);
 		
 		
-		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(buffet.getUrl()+".jpg").toString()));
+		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(car.getUrl()+".jpg").toString()));
 		img.setFitHeight(80); 
 		img.setFitWidth(80);
 		img.setPreserveRatio(true);
@@ -41,22 +41,19 @@ public class BuffetPane extends HBox {
 			Main.sceneController.changeScene(home.getHomeScene());
 		});
 		
-		Label name = new Label(buffet.getName());
+		Label name = new Label(car.getName());
 		name.setFont(new Font(16));
 		name.setMinWidth(200);
 		
-		Label location = new Label(" " +buffet.getLocation());
+		Label location = new Label(car.getLicensePlate());
 		location.setFont(new Font(12));
-		
-		Label queue = new Label(String.valueOf(buffet.getQueue()));
-		queue.setFont(new Font(22));
-		
+				
 		
 		VBox vBox = new VBox(); 
 		vBox.setAlignment(Pos.TOP_LEFT);
 		vBox.getChildren().addAll(name,location);
 		
-		getChildren().addAll(img,vBox,queue);
+		getChildren().addAll(img,vBox);
 		
 	}
 }

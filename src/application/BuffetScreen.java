@@ -28,7 +28,7 @@ public class BuffetScreen {
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public BuffetScreen(ArrayList<Buffet> buffets) {
+	public BuffetScreen(ArrayList<Object> buffets) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
@@ -62,8 +62,9 @@ public class BuffetScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Buffet buf: buffets) {
-			BuffetPane pane = new BuffetPane(buf);
+		for(Object buf: buffets) {
+			Buffet buffet = (Buffet) buf;
+			BuffetPane pane = new BuffetPane(buffet);
 			vpane.getChildren().add(pane);
 		}
 		

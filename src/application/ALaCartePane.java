@@ -22,16 +22,7 @@ public class ALaCartePane extends HBox {
 		setPadding(new Insets(5,20,5,20));
 		setSpacing(20);
 		
-		String url;
-		switch(ala.getName()) {
-			case "Marugame Seimen" : url = "Marugame Seimen.jpg"; break;
-			case "SEEFAH" : url = "SEEFAH.jpg"; break;
-			case "Shinkanzen Sushi" : url = "Shinkanzen Sushi.jpg"; break;
-			case "The Bibimbab"	: url = "The Bibimbab.jpg"; break;
-			default : url = "Cafe Pla.jpg";
-		}
-		
-		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(url).toString()));
+		ImageView img = new ImageView(new Image(ClassLoader.getSystemResource(ala.getUrl() + ".jpg").toString()));
 		img.setFitHeight(80); 
 		img.setFitWidth(80);
 		img.setPreserveRatio(true);

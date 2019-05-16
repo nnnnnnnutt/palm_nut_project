@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.Dessert;
+import logic.ALaCarte;
 import logic.User;
 
 public class DessertScreen {
@@ -28,7 +28,11 @@ public class DessertScreen {
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public DessertScreen(ArrayList<Dessert> desserts) {
+	public DessertScreen() {
+		
+	}
+	
+	public DessertScreen(ArrayList<Object> desserts) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
@@ -62,8 +66,9 @@ public class DessertScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Dessert des: desserts) {
-			DessertPane pane = new DessertPane(des);
+		for(Object des: desserts) {
+			ALaCarte dessert = (ALaCarte) des;
+			DessertPane pane = new DessertPane(dessert);
 			vpane.getChildren().add(pane);
 		}
 		

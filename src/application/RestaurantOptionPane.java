@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import logic.ApplicationLogic;
+import logic.CSVLogic;
 import logic.User;
 
 public class RestaurantOptionPane {
@@ -80,8 +80,7 @@ public class RestaurantOptionPane {
 		dessertBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			ApplicationLogic logic = new ApplicationLogic();
-			DessertScreen dessert = new DessertScreen(logic.getAllDesserts());
+			DessertScreen dessert = new DessertScreen(Main.controller.data.getAllDesserts());
 			Main.sceneController.changeScene(dessert.getDessertScreenScene());
 		});
 		
@@ -102,8 +101,7 @@ public class RestaurantOptionPane {
 		aLaCarteBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			ApplicationLogic logic = new ApplicationLogic();
-			ALaCarteScreen ala = new ALaCarteScreen(logic.getAllALaCartes());
+			ALaCarteScreen ala = new ALaCarteScreen(Main.controller.data.getAllALaCartes());
 			Main.sceneController.changeScene(ala.getALaCarteScreenScene());
 		});
 
@@ -123,8 +121,7 @@ public class RestaurantOptionPane {
 		buffetBtn.setOnMouseClicked(e -> {
 			rootPane.setCursor(javafx.scene.Cursor.HAND);
 			// change to other scene
-			ApplicationLogic logic = new ApplicationLogic();
-			BuffetScreen buffet = new BuffetScreen(logic.getAllBuffets());
+			BuffetScreen buffet = new BuffetScreen(Main.controller.data.getAllBuffets());
 			Main.sceneController.changeScene(buffet.getBuffetScreenScene());
 		});
 

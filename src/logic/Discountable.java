@@ -1,5 +1,5 @@
 package logic;
 
 public interface Discountable {
-	public void discount();
+	public boolean discount(int amount);
 }

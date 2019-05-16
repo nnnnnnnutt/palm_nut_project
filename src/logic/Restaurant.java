@@ -1,34 +1,24 @@
 package logic;
 
-import java.util.ArrayList;
+import application.Main;
 
-public class Restaurant extends IncludeImage implements Discountable{
-	private ArrayList<Restaurant> restaurant;
+public class Restaurant implements Discountable{
 	private int queue;
 	private String name;
 	private String location;
-	private boolean isWaiting = false;
+	private String url;
+	private boolean isInLine;
+	private int discount = 0;
 
 	public Restaurant() {
 		super();
 	}
-	public Restaurant(String name, String location, int queue) {
-		
+	public Restaurant(String name, String location, int queue, String url) {
 		this.name = name;
 		this.location = location;
 		this.queue = queue;
-		
+		this.url = url;
 	}
-	
-
-	public ArrayList<Restaurant> getRestaurant() {
-		return restaurant;
-	}
-
-	public void setRestaurant(ArrayList<Restaurant> restaurant) {
-		this.restaurant = restaurant;
-	}
-
 	public int getQueue() {
 		return queue;
 	}
@@ -40,35 +30,41 @@ public class Restaurant extends IncludeImage implements Discountable{
 	public String getName() {
 		return name;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getLocation() {
 		return location;
 	}
-
-	public void setLocation(String location) {
-		this.location = location;
+	
+	public String getUrl() {
+		return this.url;
 	}
 	
+	public boolean getIsInLine() {
+		return this.isInLine;
+	}
+	public void setIsInLine(boolean isInLine) {
+		this.isInLine = isInLine;
+		if (isInLine) {
+			Main.controller.addToHistory(this);
+		} else {
+			Main.controller.addToHistory(this);
+		}
+	}
+	
+	public int getDiscount() {
+		return this.discount;
+	}
 	
 	public boolean isWaiting() {
-		return isWaiting;
+		return this.getQueue() > 0;
 	}
-	public void setWaiting(boolean isWaiting) {
-		if(getQueue() > 0) {
-			this.isWaiting = true;
-		}
-		else {
-			this.isWaiting = false;
-		}
-	}
+
 	@Override
-	public void discount() {
+	public boolean discount(int amount) {
 		// TODO Auto-generated method stub
-		
+		if (amount >= 0) {
+			this.discount = amount;
+		}
+		return true;
 	}	
 	
 

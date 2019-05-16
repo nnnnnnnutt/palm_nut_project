@@ -19,16 +19,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import logic.ALaCarte;
+import logic.Car;
 import logic.User;
 
-public class ALaCarteScreen {
+public class CarScreen {
 	private VBox rootPane;
-	private Scene ALaCarteScreenScene;
+	private static Scene CarScreenScene;
 	private ImageView homeBtn;
 	private ImageView signOutBtn;
 	
-	public ALaCarteScreen(ArrayList<Object> ala) {
+	
+	public CarScreen(ArrayList<Object> cars) {
 		rootPane = new VBox(10);
 		rootPane.setPadding(new Insets(25, 25, 25, 25));
 		rootPane.setStyle("-fx-background-color:BLANCHEDALMOND;");
@@ -62,9 +63,9 @@ public class ALaCarteScreen {
 		vpane.setPadding(new Insets(20, 0, 0, 100));
 		vpane.setSpacing(5);
 		
-		for(Object alacarte: ala) {
-			ALaCarte a = (ALaCarte) alacarte;
-			ALaCartePane pane = new ALaCartePane(a);
+		for(Object car: cars) {
+			Car c = (Car) car;
+			CarPane pane = new CarPane(c);
 			vpane.getChildren().add(pane);
 		}
 		
@@ -129,7 +130,7 @@ public class ALaCarteScreen {
 	    VBox.setVgrow(scrollPane, Priority.ALWAYS);
 	    HBox.setHgrow(scrollPane, Priority.ALWAYS);
 		
-	    ALaCarteScreenScene = new Scene(scrollPane,700,500);
+	    CarScreenScene = new Scene(scrollPane,700,500);
 	
 	}
 
@@ -137,8 +138,8 @@ public class ALaCarteScreen {
 		return rootPane;
 	}
 
-	public Scene getALaCarteScreenScene() {
-		return ALaCarteScreenScene;
+	public static Scene getCarScreenScene() {
+		return CarScreenScene;
 	}
 	
 	
