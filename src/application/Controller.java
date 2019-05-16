@@ -12,9 +12,11 @@ import logic.Voucher;
 
 public class Controller {
 	private User currentUser;
-	private Voucher voucher;
+
 	private boolean isSignedIn = false;
 	public CSVLogic data = new CSVLogic();
+	
+	private Voucher currentVoucher;
 	
 	private ArrayList<Object> history;
 
@@ -97,9 +99,11 @@ public class Controller {
 		history.remove(o);
 	}
 	
-
-	public Voucher getVoucher() {
-		return voucher;
+	public void setCurrentVoucher(Voucher v) {
+		this.currentVoucher = v;
+	}
+	public Voucher getCurrentVoucher() {
+		return currentVoucher;
 	}
 
 	public static void stopThread() {
