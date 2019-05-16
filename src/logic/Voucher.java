@@ -1,62 +1,76 @@
 package logic;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import application.Main;
 
-public class Voucher implements CsvAvailable{
-	private String promoCode;	
+public class Voucher {
+	private String promoCode;
+	private int percent;
+	private String description;
+	private int uses;
+	private int type;
 	
-	public Voucher(String promoCode) {
+	public Voucher(
+			String promoCode, 
+			int percent, 
+			String description,
+			int uses,
+			int type
+		) {
 		this.promoCode = promoCode;
+		this.percent = percent;
+		this.description = description;
+		this.uses = uses;
+		this.type = type;
 	}
-	
 
 	public String getPromoCode() {
 		return promoCode;
 	}
 
+	public int getPercent() {
+		return percent;
+	}
 
-	@Override
-	public String getCsv() {
-		// TODO Auto-generated method stub
-		return "Voucher.csv";
+	public String getDescription() {
+		return description;
+	}
+
+	public int getUses() {
+		return uses;
+	}
+
+	public int getType() {
+		return type;
 	}
 	
-	public ArrayList<Voucher> makeList() {
-		BufferedReader br = null;
-		String line = "";
-		String cvsSplitBy = ",";
-		ArrayList<Voucher> data = new ArrayList<Voucher>();
-		try {
-			InputStream in = ClassLoader.getSystemResourceAsStream(this.getCsv());
-			br = new BufferedReader(new InputStreamReader(in));
-			while ((line = br.readLine()) != null) {
-				String[] csvdata = line.split(cvsSplitBy);
-				// ----------------------
-				String code = csvdata[0];
-				Voucher newdata = new Voucher(code);
-				data.add(newdata);
+	public boolean use(Object o) {
+		if (o instanceof Discountable) {
+			Discountable d = (Discountable) o;
+			// Check type
+			boolean valid = false;
+			if (d instanceof Accommodation && this.type == 2) {
+				valid = true;
+			} else if (d instanceof Buffet && this.type == 0) {
+				valid = true;
+			} else if (d instanceof Car && this.type == 3) {
+				valid = true;
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			
+			if (valid) d.discount(this.percent);
+			else return false;
+		} else {
+			// Type 1 can only be used with a la carte
+			if (this.type != 1) {
+				return false;
 			}
 		}
-		return data;
+		if (this.uses > 0) {
+			this.uses -= 1;
+			Main.controller.addToHistory(this);
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
-		
 	
 }

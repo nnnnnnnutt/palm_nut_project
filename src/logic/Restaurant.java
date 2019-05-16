@@ -2,13 +2,12 @@ package logic;
 
 import application.Main;
 
-public class Restaurant implements Discountable{
+public class Restaurant {
 	private int queue;
 	private String name;
 	private String location;
 	private String url;
 	private boolean isInLine;
-	private int discount = 0;
 
 	public Restaurant() {
 		super();
@@ -50,22 +49,8 @@ public class Restaurant implements Discountable{
 		}
 	}
 	
-	public int getDiscount() {
-		return this.discount;
-	}
-	
 	public boolean isWaiting() {
 		return this.getQueue() > 0;
 	}
-
-	@Override
-	public boolean discount(int amount) {
-		// TODO Auto-generated method stub
-		if (amount >= 0) {
-			this.discount = amount;
-		}
-		return true;
-	}	
-	
 
 }

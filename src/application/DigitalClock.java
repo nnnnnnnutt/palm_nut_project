@@ -7,13 +7,6 @@ import javafx.util.Duration;
 
 import java.util.Calendar;
 
-
-/**
- * Creates a digital clock display as a simple label. Format of the clock
- * display is hh:mm:ss aa, where: hh Hour in am/pm (1-12) mm Minute in hour ss
- * Second in minute aa Am/pm marker Time is the system time for the local
- * timezone.
- */
 class DigitalClock extends Label {
 	public DigitalClock() {
 		bindToTime();
@@ -39,15 +32,6 @@ class DigitalClock extends Label {
 }
 
 class StringUtilities {
-	/**
-	 * Creates a string left padded to the specified width with the supplied padding
-	 * character.
-	 * 
-	 * @param fieldWidth the length of the resultant padded string.
-	 * @param padChar    a character to use for padding the string.
-	 * @param s          the string to be padded.
-	 * @return the padded string.
-	 */
 	public static String pad(int fieldWidth, char padChar, String s) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = s.length(); i < fieldWidth; i++) {
